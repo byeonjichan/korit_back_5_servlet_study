@@ -1,0 +1,27 @@
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%
+	// 스크립트릿
+	List<String> names = List.of("고영희","교영희","고영회");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Hello</h1>
+	<ul>
+		<%
+		for(String name : names) {
+		%>
+		<li></li>
+		<%
+			}
+		%>
+	</ul>
+</body>
+</html>

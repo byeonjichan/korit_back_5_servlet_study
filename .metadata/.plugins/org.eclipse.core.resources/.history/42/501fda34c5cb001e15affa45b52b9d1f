@@ -1,0 +1,35 @@
+package com.study.product.service;
+
+import com.study.product.dao.ProductDao;
+import com.study.product.dto.InsertProductReqDto;
+import com.study.product.vo.ProductVo;
+import com.study.product.dto.*;
+
+public class ProductService {
+	private static ProductService instance;
+	private ProductDao productDao; 
+	
+	private ProductService() {
+		productDao = ProductDao.getinstance();
+	}
+	
+	public static ProductService getInsetance() {
+		if(instance == null) {
+			instance = new ProductService();
+		}
+		return instance;
+	}
+	public boolean isDuplicatedProductName(String productName) {
+		return productDao.findProductByName(productName) != null; // 이거 자체가 true false
+	}
+	public InsertProductRespDto addProduct(InsertProductReqDto insertProductReqDto) {
+		ProductVo productVo = insertProductReqDto.toVo();
+		
+		int successCount = productDao.save(productVo);
+		
+		return productVo.toDto(successCount);
+		
+	}
+	public 
+}
+

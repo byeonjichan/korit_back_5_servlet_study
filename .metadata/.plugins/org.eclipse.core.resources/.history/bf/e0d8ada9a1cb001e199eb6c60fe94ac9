@@ -1,0 +1,55 @@
+package com.study.product.servlet;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.study.product.dao.ProductDao;
+import com.study.product.dto.InsertProductReqDto;
+import com.study.product.entity.Product;
+import com.study.product.utils.RequestUtil;
+
+@WebServlet("/product")
+public class InsertProductServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    public InsertProductServlet() {
+        super();
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		InsertProductReqDto reqDto = RequestUtil.convertJsonData(request, InsertProductReqDto.class);
+		System.out.println(reqDto);
+		
+		Product product = gson.fromJson(builder.toString(), Product.class);
+		ProductDao productDao = ProductDao.getinstance();
+		
+		//상품명 중복 이름 체크
+		Product findProduct = productDao.findProductByName(product.getName());
+		
+		
+		
+		
+		
+		int successCount = productDao.saveProduct(product);
+		
+		Map<String, Object> responseMap = new HashMap<>();
+		responseMap.put("Status", 201);
+		responseMap.put("succeessCount", successCount);
+		
+		response.setStatus(201);
+		response.setContentType("application/json");
+		
+		PrintWriter writer = response.getWriter();
+		writer.println(gson.toJson(responseMap));
+	}
+}

@@ -1,0 +1,92 @@
+package com.study.insert_and_select.servlet;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.PooledConnection;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.study.insert_and_select.dao.StudentDao;
+import com.study.insert_and_select.entity.Student;
+
+@WebServlet("/data/addition")
+public class DataInsertServlet extends HttpServlet {
+	public DataInsertServlet() {
+		super();
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		StringBuilder builder = new StringBuilder();
+
+		String readData = null;
+
+		BufferedReader reader = request.getReader();
+
+		while ((readData = reader.readLine()) != null) {
+			builder.append(readData);
+		}
+		// Json -> Map
+		// 키,밸류가 하나뿐이면 맵 사용해도 됨
+		Gson gson = new Gson();
+		Map<String, Object> map = gson.fromJson(builder.toString(), Map.class);
+		System.out.println(map);
+		System.out.println(map.get("name"));
+		System.out.println(map.get("age"));
+
+		// Json -> Entity객체
+		// -> 변수명과 자료형이 일치해야함
+		Student student = gson.fromJson(builder.toString(), Student.class);
+		System.out.println(student);
+		System.out.println(student.getName());
+		System.out.println(student.getAge());
+
+		StudentDao studentDao = StudentDao.getInstance();
+		
+		Student findStudent = studentDao.findStudentByName(student.getName());
+		
+//		Connection con = null;  데이터 베이스 연결
+//		String sql = null;  SQL 쿼리문 작성
+//		PreparedStatement pstmt = null;  SQL 쿼리문 입력
+//		int successCount = 0;  SQL Insert, update, delete 실행 결과(성공횟수)
+//		ResultSet rs = null;
+//		Student findStudent = null;
+
+		Map<String, Object> responseMap = new HashMap<>();
+		responseMap.put("status", 201);
+		responseMap.put("data", "응답데이터");
+		responseMap.put("successCount", successCount);
+
+		response.setStatus(201);
+		response.setContentType("application/json");
+
+		PrintWriter writer = response.getWriter();
+		writer.println(gson.toJson(responseMap));
+
+//		System.out.println(builder.toString());		
+
+//		Student student = Student.builder()
+//				.name("변지찬")
+//				.age(28)
+//				.build();
+//		
+//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//		
+//		String studentJson = gson.toJson(student);
+//		
+//		System.out.println(studentJson); 
+	}
+}

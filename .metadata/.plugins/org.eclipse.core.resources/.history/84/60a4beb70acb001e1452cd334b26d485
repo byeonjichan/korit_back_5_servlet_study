@@ -1,0 +1,13 @@
+package com.study.product.dao;
+
+public class productDao {
+	private static productDao instance;
+	
+	private productDao() {}
+	
+	public static productDao getinstance() {
+		if(instance == null);
+			instance = new productDao();
+	}
+	return instance;
+}

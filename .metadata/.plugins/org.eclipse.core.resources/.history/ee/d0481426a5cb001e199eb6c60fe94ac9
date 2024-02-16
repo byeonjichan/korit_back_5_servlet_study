@@ -1,0 +1,8 @@
+package com.study.product.Vo;
+
+public class ProductVo {
+	private int productId;
+	private String productName;
+	private int productPrice;
+	private String productSize;
+}
