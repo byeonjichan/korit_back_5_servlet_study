@@ -40,7 +40,7 @@ public class DBConnectionMgr {
 
     private Vector connections = new Vector(10);
     private String _driver = "com.mysql.cj.jdbc.Driver",
-    _url = "jdbc:mysql://mysql-db.c76uwwu2afni.ap-northeast-2.rds.amazonaws.com:3306/db_study",
+    _url = "jdbc:mysql://mysql-db.cp4tulasrlul.ap-northeast-2.rds.amazonaws.com:3306/db_study",
     _user = "aws",
     _password = "1q2w3e4r!!";
     

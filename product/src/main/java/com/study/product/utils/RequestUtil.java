@@ -4,40 +4,41 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.study.product.dto.InsertProductReqDto;
 
 public class RequestUtil {
-	// 제이슨 데이터 문자열로 변환
-	public static String getJsonData(HttpServletRequest request) throws IOException {
-		String requestJsonData=null;
-		StringBuilder builder = new StringBuilder();
-		
-		String readLineData = null;
-		BufferedReader reader = request.getReader(); //리더객체를 가져온다
-		
-		while ((readLineData = reader.readLine()) != null) {
-			builder.append(readLineData);
-		}
-		requestJsonData = builder.toString(); // 리퀘스트 요청 데이터
-		
-		return requestJsonData;
-	}
 	
-	//제이슨 문자열변환 , 객체로 가져오는 것 까지
-	public static <T> T convertJsonData(HttpServletRequest request, Class<T> classOfT) throws IOException {
-		String requestJsonData=null;
+	public static String getJsonData(HttpServletRequest request) throws IOException {
+		String requestJsonData = null;
 		StringBuilder builder = new StringBuilder();
 		
 		BufferedReader reader = request.getReader();
 		
 		String readLineData = null;
 		
-		while ((readLineData = reader.readLine()) != null) {
+		while((readLineData = reader.readLine()) != null) {
 			builder.append(readLineData);
 		}
+		
+		requestJsonData = builder.toString();
+		
+		return requestJsonData;
+	}
+	
+	public static <T> T convertJsonData(HttpServletRequest request, Class<T> classOfT) throws IOException {
+		String requestJsonData = null;
+		StringBuilder builder = new StringBuilder();
+		
+		BufferedReader reader = request.getReader();
+		
+		String readLineData = null;
+		
+		while((readLineData = reader.readLine()) != null) {
+			builder.append(readLineData);
+		}
+		
 		requestJsonData = builder.toString();
 		
 		Gson gson = new Gson();
@@ -45,3 +46,21 @@ public class RequestUtil {
 		return gson.fromJson(requestJsonData, classOfT);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

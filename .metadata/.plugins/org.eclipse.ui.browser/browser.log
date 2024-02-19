@@ -5,3 +5,6 @@
 2월 15, 2024 17:06:39.42 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
 2월 15, 2024 17:08:55.66 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
 2월 15, 2024 17:26:56.21 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+2월 16, 2024 09:32:50.75 NEW SESSION
+2월 16, 2024 09:32:50.76 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.

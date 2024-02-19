@@ -11,5 +11,4 @@ public class InsertProductRespDto {
 	private String productName;
 	private int productPrice;
 	private String productSize;
-	
 }

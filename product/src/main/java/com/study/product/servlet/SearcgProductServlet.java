@@ -24,7 +24,7 @@ public class SearcgProductServlet extends HttpServlet {
 	
     public SearcgProductServlet() {
     	super();
-    	productService = ProductService.getInsetance();
+    	productService = ProductService.getInstance();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ResponseEntity.ofJson(response, 200, productService.searchProducts());

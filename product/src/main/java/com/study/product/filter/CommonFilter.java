@@ -11,13 +11,15 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebFilter("/*")
 public class CommonFilter extends HttpFilter implements Filter {
+       
     public CommonFilter() {
         super();
     }
+
 	public void destroy() {}
+
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 		httpServletResponse.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -29,8 +31,18 @@ public class CommonFilter extends HttpFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException {
 
+	public void init(FilterConfig fConfig) throws ServletException {
+		fConfig.getServletContext();
+		
 	}
 
 }
+
+
+
+
+
+
+
+

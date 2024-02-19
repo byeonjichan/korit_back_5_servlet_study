@@ -3,8 +3,8 @@ package com.study.product.dto;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
 @Builder
+@Data
 public class SearchProductRespDto {
 	private int productId;
 	private String productName;

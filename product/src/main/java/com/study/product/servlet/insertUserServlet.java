@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.study.product.dto.InsertUserReqDto;
 import com.study.product.utils.RequestUtil;
+import com.study.product.utils.ResponseEntity;
 
 @WebServlet("/user")
-public class insertUserServlet extends HttpServlet {
+public class InsertUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public insertUserServlet() {
+       
+    public InsertUserServlet() {
         super();
     }
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		InsertUserReqDto dto = RequestUtil.convertJsonData(request, InsertUserReqDto.class);
+		System.out.println(dto);
+		ResponseEntity.ofJson(response, 200, dto);
 	}
 
 }

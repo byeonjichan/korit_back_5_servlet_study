@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Statement"/>
-    <fullyQualifiedTypeName name="java.beans.Statement"/>
-    <fullyQualifiedTypeName name="com.study.servlet_study.config.DBConnectionMgr"/>
     <fullyQualifiedTypeName name="com.study.servlet_study.entity.Author"/>
     <fullyQualifiedTypeName name="com.study.servlet_study.repository.BookRepository"/>
     <fullyQualifiedTypeName name="com.study.servlet_study.entity.Publisher"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Collection"/>
     <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
     <fullyQualifiedTypeName name="com.study.product.utils.ResponseEntity"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+    <fullyQualifiedTypeName name="javax.servlet.jsp.JspApplicationContext"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>
